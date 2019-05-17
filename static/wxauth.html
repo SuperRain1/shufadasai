@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>微信授权</title>
+</head>
+<body>
+
+</body>
+
+<script language="javascript" type="text/javascript">
+
+  function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+      var index = vars[i].indexOf("=")
+      var variName= vars[i].substring(0,index)
+
+      if(variName == variable) {
+        return vars[i].substring(index+1)
+      }
+    }
+    return(false);
+  }
+  // function getPreUrl(){
+  //   var query = window.location.toString();
+  //   var vars = query.split("/shufa/static");
+  //   return vars[0];
+  // }
+  var reUrl = "http://shufa.xuebuapp.com/#/wxlogin?code="+getQueryVariable("code") +"&state="+getQueryVariable("state")
+      +"&redirect="+getQueryVariable("redirect")+"&auth_type="+getQueryVariable("auth_type");
+  console.log(reUrl)
+  window.location.href=reUrl;
+</script>
+
+</html>
